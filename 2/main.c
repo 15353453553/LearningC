@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <limits.h>
 
-#define DEBUG 2
+#define DEBUG 1
 
 long long inSeconds(long long i, char c);
 float average(float a[], int start, int stop);
@@ -35,10 +35,12 @@ int main(){
     float tempData[] = {16.4, 15.2, 9.6, 4.7, 2.6, 2.6, 4.4, 5.1, 7.8, 14.4, 18.4, 19.2, 20.3};
 
     printf("Mittlere Temperatur der letzten zwölf Monate (09/21-08/22): %f\n", average(tempData, 2, 13));
+
     printf("Durchschnittstemperaturen vom Herbst `21 (Sep-Nov): %f\n", average(tempData, 2, 4));
     printf("Durchschnittstemperaturen vom Winter `21/22 (Dez-Feb): %f\n", average(tempData, 5, 7));
     printf("Durchschnittstemperaturen vom Frühling `22 (Mär-Mai): %f\n", average(tempData, 8, 10));
     printf("Durchschnittstemperaturen vom Sommer `22 (Jun-Aug): %f\n", average(tempData, 11, 13));
+
     printf("Temperaturdifferenz zwischen Aug 21 und Aug 22: %f\n",  tempData[12]-tempData[0]);
     
 #endif
@@ -48,7 +50,7 @@ return 0;
 
 long long inSeconds(long long i, char c){
 
-    if(c == 'j') i = inSeconds((long long)i*365, 'w');
+    if(c == 'j') i = inSeconds((long long)i*365, 'd');
     
     if(c == 'w') i = inSeconds((long long)i*7, 'd');
 
